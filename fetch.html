@@ -1,0 +1,106 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .box {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .inner-box {
+            margin-top: 20px;
+        }
+
+        .box1{
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        div:hover {
+            background-color: #d0d0d0;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        p {
+            margin: 5px 0 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="inner-box">
+
+        </div>
+    </div>
+
+    <script>
+        async function fectchData(){
+            try {
+                const res = await fetch("http://localhost:3000/api/companyDetails")
+
+                const data = await res.json()
+                 const users = data
+                //  console.log(users)
+                 const el = users.map((item)=>{
+                    return `<div class="box1">
+                            <h2>${item.comments[0].user}</h2>
+                            <p>${item.comments[0].text}</p>
+                        </div>`
+                 }).join("")
+                 document.querySelector(".inner-box").innerHTML = el
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fectchData()
+
+
+        let print = async () => {
+            try {
+                let response = await fetch('http://localhost:3000/api/companyDetails');
+                let data = await response.json(); // Corrected here
+                console.log(data);
+
+                const element = data.map((item, index) => {
+                    return `
+                        <div key="${index}">
+                            <ul>
+                                <li>${item.title}</li>
+                                <li>${item.content}</li>
+                            </ul>
+                        </div>
+                    `;
+                }).join("");
+
+                document.querySelector(".conten").innerHTML = element; // Correct placement here
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        fetch("http://localhost:3000/api/companyDetails")
+        .then((res) => res.json())
+        .then((data) => {
+            const el = data.map((item) => {
+                return( `
+                <div>
+                    <p>${item.content}</p>
+                    <p>${item.author}</p>
+                </div>
+                `);
+            }).join(""); // Join is now correctly placed here
+            document.querySelector(".box").innerHTML = el; 
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    </script>
+</body>
+</html>
