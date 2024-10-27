@@ -7,6 +7,8 @@ import { user } from "./user.js"; // Importing user correctly
 const app = express();
 app.use(cors());
 
+app.use(express.static("public"))
+
 app.get('/api', (req, res) => {
   const html = `
     <ul>
