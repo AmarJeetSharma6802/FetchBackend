@@ -32,15 +32,8 @@ app.route('/api/user/:id').get((req, res) => {
   }
 });
 
-app.get("/image",(req,res)=>{
-  res.send([
-    {
-      img:"http://localhost:3000/image/email.png"
-    },
-    {},
-    {}
-  ])
-})
+
+
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
