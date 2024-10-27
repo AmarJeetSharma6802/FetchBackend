@@ -71,3 +71,4 @@ const user = [
  export {user}
 
  console.log(user[0].comments[0].user)
+//  https://fetch-backend-blush.vercel.app/api/user/1
