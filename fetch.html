@@ -59,7 +59,7 @@
     <script>
         async function fectchData(){
             try {
-                const res = await fetch("http://localhost:3000/api/companyDetails")
+                const res = await fetch("https://fetch-backend-blush.vercel.app/api/companyDetails")
 
                 const data = await res.json()
                  const users = data
@@ -78,28 +78,28 @@
         fectchData()
 
 
-        let print = async () => {
-            try {
-                let response = await fetch('http://localhost:3000/api/companyDetails');
-                let data = await response.json(); // Corrected here
-                console.log(data);
+        // let print = async () => {
+        //     try {
+        //         let response = await fetch('https://fetch-backend-blush.vercel.app/api/companyDetails');
+        //         let data = await response.json(); // Corrected here
+        //         console.log(data);
 
-                const element = data.map((item, index) => {
-                    return `
-                        <div key="${index}">
-                            <ul>
-                                <li>${item.title}</li>
-                                <li>${item.content}</li>
-                            </ul>
-                        </div>
-                    `;
-                }).join("");
+        //         const element = data.map((item, index) => {
+        //             return `
+        //                 <div key="${index}">
+        //                     <ul>
+        //                         <li>${item.title}</li>
+        //                         <li>${item.content}</li>
+        //                     </ul>
+        //                 </div>
+        //             `;
+        //         }).join("");
 
-                document.querySelector(".conten").innerHTML = element; // Correct placement here
-            } catch (error) {
-                console.log(error);
-            }
-        }
+        //         document.querySelector(".conten").innerHTML = element; // Correct placement here
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
     </script>
     
 </body>

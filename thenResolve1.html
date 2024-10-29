@@ -8,7 +8,7 @@
     <div class="box"></div>
 
     <script>
-        fetch("http://localhost:3000/api/companyDetails")
+        fetch("https://fetch-backend-blush.vercel.app/api/companyDetails")
         .then((res) => res.json())
         .then((data) => {
             const el = data.map((item) => {
