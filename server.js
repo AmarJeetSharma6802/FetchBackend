@@ -2,8 +2,7 @@ import express from "express";
 import cors from "cors";
 import { Router } from "express";
 
-import { user } from "./user.js"; // Importing user correctly
-
+import { user } from "./user.js";
 const app = express();
 app.use(cors());
 
