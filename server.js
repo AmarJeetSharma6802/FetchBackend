@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { Router } from "express";
+import data from './userDesign.js'
 
 import { user } from "./user.js";
 const app = express();
@@ -31,7 +32,19 @@ app.route('/api/user/:id').get((req, res) => {
   }
 });
 
+app.get("/userDesign",(req,res)=>{
+  res.json(data)
+})
 
+app.route("/userDesign/:id").get((req,res)=>{
+  const id = parseInt(req.params.id, 10); 
+  const user = data.find(user => user.id === id)
+  if(!user){
+      res.status(404).json({message: "User not found"})
+  }
+  res.json(user)
+
+})
 
 
 app.listen(3000, () => {
