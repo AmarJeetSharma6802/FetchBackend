@@ -50,17 +50,21 @@ app.route("/userDesign/:id").get((req,res)=>{
 
 app.post('/api/upload', upload.single('image'), (req, res) => {
   try {
-    const imageUrl = req.file.path;
+    console.log('Uploaded file details:', req.file);
+
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+    
     res.status(200).json({
       message: 'Image uploaded successfully',
-      url: imageUrl,
+      url: req.file.path, 
     });
   } catch (error) {
     console.error('Error uploading image:', error);
     res.status(500).json({ message: 'Image upload failed' });
   }
-});
-
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+})
+app.listen(9000, () => {
+  console.log("Server is running on port 8000");
 });
